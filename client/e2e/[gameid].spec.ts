@@ -172,3 +172,26 @@ test(`Minesweeper game should have scoreboard`, async ({ page }) => {
   await expect(page.locator(selector)).toHaveCount(3);
   await expect(page.locator(selector).nth(1)).toContainText("Score");
 });
+
+// Snake Game specific tests
+test(`Snake game should have play button`, async ({ page }) => {
+  await page.goto(`${LOCAL_HOST_URL}${2}`);
+  const selector = "//*[contains(@class,'chakra-container')]/div/button";
+  await expect(page.locator(selector, { hasText: "Play Game" })).toBeVisible();
+});
+
+test(`Snake game should have end game and pause game button`, async ({
+  page,
+}) => {
+  await page.goto(`${LOCAL_HOST_URL}${2}`);
+  const selector = "//*[contains(@class,'chakra-container')]/div/button";
+  page.locator(selector).click();
+  await expect(page.locator(selector, { hasText: "Play Game" })).toBeVisible();
+  await expect(page.locator(selector, { hasText: "End Game" })).toBeVisible();
+});
+
+test(`Snake game should have snake game area`, async ({ page }) => {
+  await page.goto(`${LOCAL_HOST_URL}${2}`);
+  const selector = "//*[contains(@class,'snakeGame_gameArea')]";
+  await expect(page.locator(selector)).toBeVisible();
+});
