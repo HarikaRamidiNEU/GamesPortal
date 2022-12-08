@@ -18,6 +18,7 @@ import type { MinesweeperCellProps } from "lib/types/components/games/minesweepe
 const FlaggedCell: React.FC<Flag> = ({ flag }) => {
   return flag ? (
     <IconButton
+      aria-details="MinesweeperCell"
       as={BsFillFlagFill}
       alignItems="center"
       color="red"
@@ -31,6 +32,7 @@ const FlaggedCell: React.FC<Flag> = ({ flag }) => {
     />
   ) : (
     <IconButton
+      aria-details="MinesweeperCell"
       m="0.5"
       rounded="10%"
       colorScheme="teal"
@@ -87,6 +89,7 @@ const MinesweeperCell: React.FC<MinesweeperCellProps> = ({
         <FlaggedCell flag={flag} />
       ) : (
         <IconButton
+          aria-details="MinesweeperCell"
           m="0.5"
           rounded="10%"
           aria-label="Button"

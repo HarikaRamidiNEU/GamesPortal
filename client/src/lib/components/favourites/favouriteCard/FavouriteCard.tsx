@@ -66,7 +66,12 @@ const FavouriteCard: React.FC<{ game: GameInfo }> = ({ game }) => {
         />
       </Box>
       <Stack pt={10} align="center">
-        <Heading fontSize="3xl" fontFamily="body" fontWeight={500}>
+        <Heading
+          fontSize="3xl"
+          fontFamily="body"
+          fontWeight={500}
+          id={`favCardButton${game.id}`}
+        >
           {game.name}
         </Heading>
         <Button
