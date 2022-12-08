@@ -20,7 +20,7 @@ import RockPaperScissors from "./rockpaperscissors/RockPaperScissors";
 import SnakeGame from "./snakegame/SnakeGame";
 import TicTacToe from "./tictactoe/TicTacToe";
 import TypingSpeed from "./typingspeed/typingspeed";
-import Betcard from './betcard/App';
+import Betcard from './betcard/BetCard';
 
 /**
  * Collection of all the games present in the application.
@@ -148,7 +148,7 @@ const games: GameInfoCollection = {
   },
   11: {
     id: 11,
-    name: "Rock Paper Scissors",
+    name: "Bet Card",
     component: <Betcard />,
     image: "images/card.png",
     altImage: "images/card.png",
