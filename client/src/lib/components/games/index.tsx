@@ -20,6 +20,7 @@ import RockPaperScissors from "./rockpaperscissors/RockPaperScissors";
 import SnakeGame from "./snakegame/SnakeGame";
 import TicTacToe from "./tictactoe/TicTacToe";
 import TypingSpeed from "./typingspeed/typingspeed";
+import Betcard from './betcard/App';
 
 /**
  * Collection of all the games present in the application.
@@ -144,6 +145,18 @@ const games: GameInfoCollection = {
     helpContent:
       "user should select any one option and the system will generate one option",
     icon: GiSuicide,
+  },
+  11: {
+    id: 11,
+    name: "Rock Paper Scissors",
+    component: <Betcard />,
+    image: "images/card.png",
+    altImage: "images/card.png",
+    description:
+      "This game lets the player hit or skip and bet for the cards with the system",
+    helpContent:
+    "This game lets the player hit or skip and bet for the cards with the system",
+    icon: GiCard6Spades,
   },
 };
 

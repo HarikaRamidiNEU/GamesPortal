@@ -4,7 +4,7 @@ import Controls from './Controls';
 import Hand from './Hand';
 import jsonData from './deck.json';
 
-const App: React.FC = () => {
+const Betcard: React.FC = () => {
   enum GameState {
     bet,
     init,
@@ -277,4 +277,4 @@ const App: React.FC = () => {
   );
 }
 
-export default App;
+export default Betcard;
