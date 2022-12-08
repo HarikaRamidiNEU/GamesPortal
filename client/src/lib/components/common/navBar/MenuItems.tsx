@@ -23,6 +23,8 @@ import SignupDrawer from "../../auth/Signup";
 import { setAxiosAuthHeader } from "lib/config/axios.config";
 import { getUser } from "lib/services/user-service";
 import { getAuthState, setAccessToken } from "lib/store/slices/authSlice";
+import { clearFavourite } from "lib/store/slices/favouritesSlice";
+import { setUserPreferenceRecentlyPlayed } from "lib/store/slices/userPreferencesSlice";
 import { useDispatch, useSelector } from "lib/store/store";
 import type { AuthState } from "lib/types/components/auth.types";
 import { showSuccess } from "lib/utils/toastUtils";
@@ -42,6 +44,8 @@ const LoggedInMenu: React.FC<AuthState> = ({ token }) => {
     setAxiosAuthHeader("");
     setSessionStorageToken("");
     dispatch(setAccessToken({ token: "" }));
+    dispatch(setUserPreferenceRecentlyPlayed([]));
+    dispatch(clearFavourite([]));
     router.push({
       pathname: `/`,
     });

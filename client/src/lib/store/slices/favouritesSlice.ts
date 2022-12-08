@@ -35,6 +35,13 @@ export const favouritesSlice = createSlice({
       const newTodos = state.favourites.filter((e) => !rgSet.has(e.gameId));
       state.favourites = newTodos;
     },
+    clearFavourite: (
+      state: Draft<FavouritesState>,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      action: PayloadAction<GameFavourites[]>
+    ) => {
+      state.favourites = [];
+    },
   },
 });
 
@@ -43,6 +50,7 @@ export const getFavourites = (state: { favourites: FavouritesState }) =>
   state.favourites;
 
 // Exports all actions
-export const { setFavourite, resetFavourite } = favouritesSlice.actions;
+export const { setFavourite, resetFavourite, clearFavourite } =
+  favouritesSlice.actions;
 
 export const favouritesSliceReducer = favouritesSlice.reducer;
