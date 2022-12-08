@@ -5,6 +5,10 @@ import { useEffect, useState } from "react";
 import { PlayButton } from "./PlayButton";
 import styles from "./styles/RockPaperScissors.module.scss";
 
+/**
+ * This component is used to create and render rock paper scissors game component
+ * @returns RockPaperScissors component
+ */
 const RockPaperScissors = () => {
   const [score, setScore] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -18,7 +22,11 @@ const RockPaperScissors = () => {
   >(null);
   const possibleResults = ["paper", "scissors", "rock"];
 
-  function startPlay(choice: "paper" | "scissors" | "rock") {
+  /**
+   * This method is used to set the state based on players choice
+   * @param choice player choice of button
+   */
+  const startPlay = (choice: "paper" | "scissors" | "rock") => {
     setIsPlaying(true);
     setPlayerChoice(choice);
     setTimeout(() => {
@@ -31,17 +39,23 @@ const RockPaperScissors = () => {
         setSystemChoice("rock");
       }
     }, 1000);
-  }
+  };
 
-  function reset() {
+  /**
+   * This method is used to reset the state
+   */
+  const reset = () => {
     setIsPlaying(false);
     setSystemChoice(null);
     setisDone(false);
     setResult("DRAW");
-  }
+  };
 
+  /**
+   * This method is used to compare the user's choice and system generated choice and update the score
+   */
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  function verifyResults() {
+  const verifyResults = () => {
     switch (playerChoice) {
       case "paper":
         if (systemChoice === "rock") {
@@ -82,8 +96,11 @@ const RockPaperScissors = () => {
     }
 
     setisDone(true);
-  }
+  };
 
+  /**
+   *  This is executed when systemchoice is updated
+   */
   useEffect(() => {
     if (systemChoice) {
       setTimeout(() => {
@@ -92,6 +109,9 @@ const RockPaperScissors = () => {
     }
   }, [systemChoice, verifyResults]);
 
+  /**
+   * Returns the component
+   */
   return (
     <Container className={styles.container}>
       {!isPlaying ? (

@@ -3,6 +3,12 @@ import type React from "react";
 import ModalComponent from "lib/components/common/modal/Modal";
 import type { ResultCardProps } from "lib/types/components/games/carGame.types";
 
+/**
+ * This component is used to render the results once the game is finished
+ * @param score final score of the game
+ * @param buttonAction to restart the game
+ * @returns results card modal
+ */
 const ResultsCard: React.FC<ResultCardProps> = ({ score, buttonAction }) => {
   return (
     <ModalComponent

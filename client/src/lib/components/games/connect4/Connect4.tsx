@@ -13,11 +13,22 @@ import Column from "./Column";
 import connect4Styles from "./styles/connect4.module.scss";
 import WinnerModal from "./WinnerModal";
 
+/**
+ * This method is used to generate initial empty board
+ * @returns The initial board
+ */
 const generateBoard = (): Board =>
   Array(7)
     .fill(undefined)
     .map(() => Array(6).fill(undefined));
 
+/**
+ * This method is used to update the board based on the user action
+ * @param board saved board state
+ * @param playedColumn describes the column on which user clicked
+ * @param currentPlayer describes which player has played
+ * @returns the updated board
+ */
 const generateNewBoard = (
   board: Board,
   playedColumn: number,
@@ -38,6 +49,12 @@ const generateNewBoard = (
   });
 };
 
+/**
+ * This method is used to check if 4 dots have been connected or not in staright line in vertical and horizontal
+ * @param gameBoard current game board
+ * @param player is current player
+ * @returns true if 4 dots have been connected
+ */
 const checkStraightLine = (gameBoard: Board, player: Player) => {
   for (let i = 0; i < 7; i += 1) {
     for (let j = 5; j >= 2; j -= 1) {
@@ -63,6 +80,12 @@ const checkStraightLine = (gameBoard: Board, player: Player) => {
   return false;
 };
 
+/**
+ * This method is used to check if the dots have been connected diagonally from left to right and right to left
+ * @param gameBoard current gameBoard
+ * @param player current player
+ * @returns true if 4 dots have been connected diagonally
+ */
 const checkDiagonally = (gameBoard: Board, player: Player) => {
   for (let i = 0; i < 4; i += 1) {
     for (let j = 5; j > 2; j -= 1) {
@@ -89,6 +112,12 @@ const checkDiagonally = (gameBoard: Board, player: Player) => {
   return false;
 };
 
+/**
+ * This method is used to check if the game is finished or not
+ * @param board is current board state
+ * @param player is current player
+ * @returns if there is a winner or not
+ */
 const isWinner = (board: Board, player: Player) => {
   let result = false;
   result = checkStraightLine(board, player);
@@ -96,6 +125,11 @@ const isWinner = (board: Board, player: Player) => {
   return result;
 };
 
+/**
+ * This method is used to set the initial state
+ * @param player is current player
+ * @returns current state of the game
+ */
 const initState = (player: Player): State => {
   return {
     currentPlayer: player,
@@ -103,6 +137,13 @@ const initState = (player: Player): State => {
     board: generateBoard(),
   };
 };
+
+/**
+ * This method is used to update the turn or reset the game
+ * @param state is current state
+ * @param action is either turn or reset
+ * @returns state or error
+ */
 const play = (state: State, action: Action): State => {
   switch (action.type) {
     case "turn": {
@@ -136,9 +177,17 @@ const play = (state: State, action: Action): State => {
   }
 };
 
+/**
+ * This component is used to create and render the main connect4 component
+ * @returns connect4 component
+ */
 const Connect4 = () => {
   const [state, dispatch] = useReducer(play, "red", initState);
 
+  /**
+   * This method is used to reset the game
+   * @param player current player
+   */
   const resetGame = (player: Player) => {
     dispatch({ type: "reset", payload: player });
   };

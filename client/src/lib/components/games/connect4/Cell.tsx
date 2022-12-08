@@ -5,6 +5,11 @@ import type { Disk } from "lib/types/components/games/connect4.types";
 
 import connect4Styles from "./styles/connect4.module.scss";
 
+/**
+ * This component is used to render a cell within the column on connect4 game board
+ * @param Disk either yellow or red else white
+ * @param size width and height of the cell
+ */
 const Cell = memo(function CellRaw({
   Disk,
   size,

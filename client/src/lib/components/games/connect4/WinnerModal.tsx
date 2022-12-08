@@ -5,6 +5,12 @@ import type { Player } from "lib/types/components/games/connect4.types";
 import Cell from "./Cell";
 import connect4Styles from "./styles/connect4.module.scss";
 
+/**
+ * This component is used to render modal showing results
+ * @param winner hold which player won
+ * @param clickFunction method used to restart the game
+ * @returns modal with results
+ */
 const WinnerModal = ({
   winner,
   clickFunction,

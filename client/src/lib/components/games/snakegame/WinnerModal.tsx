@@ -2,6 +2,11 @@ import { Center, Container } from "@chakra-ui/react";
 
 import snakeGameStyles from "./styles/snakeGame.module.scss";
 
+/**
+ * This method is used to render results modal
+ * @param gameOver gameover text
+ * @returns modal
+ */
 const WinnerModal = ({ gameOver }: { gameOver: string }) => {
   return (
     <Container className={snakeGameStyles.Overlay}>

@@ -13,6 +13,10 @@ import Snake from "./Snake";
 import snakeGameStyles from "./styles/snakeGame.module.scss";
 import WinnerModal from "./WinnerModal";
 
+/**
+ * This method is used to generate random coordinates
+ * @returns random coordinates for frog
+ */
 const getRandomCoords = () => {
   const min = 1;
   const max = 90;
@@ -21,6 +25,9 @@ const getRandomCoords = () => {
   return [x, y];
 };
 
+/**
+ * initial state of the game
+ */
 const initialState = {
   food: getRandomCoords(),
   speed: 500,
@@ -34,24 +41,37 @@ const initialState = {
   ],
 };
 
+/**
+ * This component renders snake game
+ */
 class SnakeGame extends React.Component<DispatchProp, SnakeGameProps> {
   constructor(props: DispatchProp) {
     super(props);
     this.state = initialState;
   }
 
+  /**
+   * This method is called when the component mounts
+   */
   componentDidMount() {
     const { speed } = this.state;
     setInterval(this.moveSnake, speed);
     document.onkeydown = this.onKeyDown;
   }
 
+  /**
+   * This method is triggered when the component updates (i.e snake moves)
+   */
   componentDidUpdate() {
     this.checkIfOutOfBorders();
     this.checkIfCollapsed();
     this.checkIfEat();
   }
 
+  /**
+   * This method is used to identify the keyboard key and update the states
+   * @param e keyboard event
+   */
   onKeyDown = (e: KeyboardEvent) => {
     switch (e.keyCode) {
       case 38:
@@ -71,6 +91,9 @@ class SnakeGame extends React.Component<DispatchProp, SnakeGameProps> {
     }
   };
 
+  /**
+   * This method is used to update the snake (move snake)
+   */
   moveSnake = () => {
     const { snakeDots, direction, play, pause } = this.state;
     const dots = [...snakeDots];
@@ -100,6 +123,9 @@ class SnakeGame extends React.Component<DispatchProp, SnakeGameProps> {
     }
   };
 
+  /**
+   * This method is used to check if snake reached the borders
+   */
   checkIfOutOfBorders = () => {
     const { snakeDots } = this.state;
     const head = snakeDots[snakeDots.length - 1];
@@ -108,6 +134,9 @@ class SnakeGame extends React.Component<DispatchProp, SnakeGameProps> {
     }
   };
 
+  /**
+   * This method is used to check if the snake hit itself
+   */
   checkIfCollapsed = () => {
     const { snakeDots } = this.state;
     const snake = [...snakeDots];
@@ -120,6 +149,10 @@ class SnakeGame extends React.Component<DispatchProp, SnakeGameProps> {
     });
   };
 
+  /**
+   * This method is used to update the game scores
+   * @param gameScore final score
+   */
   saveGameScores = (gameScore: number) => {
     const token = getSessionStorageToken();
     if (token && token !== "") {
@@ -137,6 +170,9 @@ class SnakeGame extends React.Component<DispatchProp, SnakeGameProps> {
     }
   };
 
+  /**
+   * This method is used to check if the snake ate frog or not
+   */
   checkIfEat = () => {
     const { snakeDots, food } = this.state;
     const head = snakeDots[snakeDots.length - 1];
@@ -149,6 +185,9 @@ class SnakeGame extends React.Component<DispatchProp, SnakeGameProps> {
     }
   };
 
+  /**
+   * This method is used to update the snake length
+   */
   enlargeSnake = () => {
     const { snakeDots } = this.state;
     const newSnake = [...snakeDots];
@@ -158,6 +197,9 @@ class SnakeGame extends React.Component<DispatchProp, SnakeGameProps> {
     });
   };
 
+  /**
+   * This method is used to update the speed of the snake
+   */
   increaseSpeed = () => {
     const { speed } = this.state;
     if (speed > 100) {
@@ -167,6 +209,9 @@ class SnakeGame extends React.Component<DispatchProp, SnakeGameProps> {
     }
   };
 
+  /**
+   * This method is used to update the state on game over
+   */
   onGameOver = () => {
     this.setState(initialState);
     const { snakeDots } = this.state;
@@ -176,11 +221,18 @@ class SnakeGame extends React.Component<DispatchProp, SnakeGameProps> {
     this.saveGameScores(snakeDots.length);
   };
 
+  /**
+   * This method is used to create and render the snake game board
+   * @returns the snake game board
+   */
   render() {
     const { play, snakeDots, food, pause, gameOver } = this.state;
     let button;
     let modal;
     if (gameOver !== "") modal = <WinnerModal gameOver={gameOver} />;
+    /**
+     * buttons will be updated based on the play state
+     */
     if (play) {
       button = (
         <Button

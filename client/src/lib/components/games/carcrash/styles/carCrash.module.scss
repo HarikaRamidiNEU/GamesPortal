@@ -1,3 +1,4 @@
+//play button styles
 .startBtn{
     background-color: aqua;
     padding: 0.3rem 2rem;
@@ -7,6 +8,7 @@
     cursor: pointer;
 }
 
+//game board styles
 .game{
     display: block;
     height: 600px;
@@ -22,6 +24,7 @@
         text-align: center;
     }
 }
+//results card styles
 .resultCard{
     height: 200px;
     width: 400px;
@@ -32,10 +35,12 @@
     text-align: center;
     color: white;
     display: none;
+    //score count on results card
     .score{
         font-size: 2.2rem;
         color: goldenrod;
     }
+    // restart button on results card
     .restartBtn{
         padding: 0.5rem 1rem;
         border-radius: 20px;

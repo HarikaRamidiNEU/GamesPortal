@@ -12,6 +12,14 @@ interface ButtonProps {
   result?: boolean;
 }
 
+/**
+ * This component is used to render buttons of rock paper and scissors
+ * @param startPlay what function needs to be triggered in parent when button is clicked
+ * @param disable decides button is in disabled state or not
+ * @param choice either rock, paper or scissors
+ * @param result who picked the image
+ * @returns button component with image
+ */
 export function PlayButton({
   startPlay,
   disable,

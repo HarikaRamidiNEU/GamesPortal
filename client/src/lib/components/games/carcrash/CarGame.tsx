@@ -34,16 +34,25 @@ class CarGame extends React.Component<DispatchProp, CarGameProps> {
     this.moveRedCar = this.moveRedCar.bind(this);
   }
 
+  /**
+   * This method will be called when this component is rendered
+   */
   componentDidMount() {
     document.onkeydown = this.onKeyDown;
   }
 
+  /**
+   * This method will be called when the component is removed
+   */
   componentWillUnmount() {
     document.removeEventListener("keydown", this.onKeyDown, false);
     const { intervalId } = this.state;
     clearInterval({ intervalId } as unknown as number);
   }
 
+  /**
+   * This method is used to check whether the the blue car hit the red car or not
+   */
   gameOver = () => {
     const blueCartopelem = document
       .getElementById("blueCar")
@@ -60,6 +69,10 @@ class CarGame extends React.Component<DispatchProp, CarGameProps> {
     }
   };
 
+  /**
+   * This methods is used to save the scores to db
+   * @param gameScore holds the final score to save in database
+   */
   saveGameScores = (gameScore: number) => {
     const token = getSessionStorageToken();
     if (token && token !== "") {
@@ -77,6 +90,10 @@ class CarGame extends React.Component<DispatchProp, CarGameProps> {
     }
   };
 
+  /**
+   * This method is used to move the car either left or right
+   * @param direction to shift in which direction
+   */
   moveRedCar = (direction: string) => {
     const { redCarLeft } = this.state;
     if (direction === "RIGHT") {
@@ -88,6 +105,10 @@ class CarGame extends React.Component<DispatchProp, CarGameProps> {
     }
   };
 
+  /**
+   * This method is used to identify the direction of the red car based on the key
+   * @param e event of keyboard action
+   */
   onKeyDown = (e: KeyboardEvent) => {
     switch (e.keyCode) {
       case 39:
@@ -101,20 +122,35 @@ class CarGame extends React.Component<DispatchProp, CarGameProps> {
     }
   };
 
+  /**
+   * This method is used to set the state when game starts
+   */
   startGame = () => {
     this.setState({ gameOver: false });
     this.setState({ play: true });
     this.setState({ intervalId: setInterval(this.gameOver, 1) });
   };
 
+  /**
+   * This method is used to save the bluecar left value and this is set from Bluecar component
+   * @param value This left value of the Bluecar
+   */
   setBlueCarLeft = (value: number) => {
     this.setState({ blueCarLeft: value });
   };
 
+  /**
+   * This method is used to update the count
+   * @param value is the no.of times redcar escapes bluecar
+   */
   setCount = (value: number) => {
     this.setState({ count: value });
   };
 
+  /**
+   * This method is used to render the car game component
+   * @returns CarGame component
+   */
   render() {
     const { score, gameOver, blueCarLeft, count, redCarLeft, play } =
       this.state;
@@ -169,4 +205,5 @@ class CarGame extends React.Component<DispatchProp, CarGameProps> {
   }
 }
 
+// exporting cargame component by connecting it with dispatchprops
 export default connect()(CarGame);

@@ -2,6 +2,11 @@ import type { SnakeProps } from "lib/types/components/games/snakeGame.types";
 
 import snakeGameStyles from "./styles/snakeGame.module.scss";
 
+/**
+ * This component is used to render snake on snake game board
+ * @param SnakeCoordinates coordinates of the snake where it needs to moved
+ * @returns snake
+ */
 const Snake: React.FC<SnakeProps> = ({ SnakeCoordinates }) => {
   return (
     <div>
