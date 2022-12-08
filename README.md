@@ -30,7 +30,6 @@
 4. Leaderboard
 5. Favourites
 6. Recently viewed
-7. Most liked games
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -56,21 +55,7 @@
 
 ## User Stories
 
-### Admin
-
-1. As an admin I should be able to view the users
-    * Go to Homepage click on Login
-    * Enter admin credentials
-    * Navigate to users page
-    * Select a user and click on view
-
-2. As an admin I should be able to delete the users
-    * Go to Homepage click on Login
-    * Enter admin credentials
-    * Navigate to users page
-    * Select a user and click on delete
-
-### User
+### User Specific Stories
 
 1. As a user I should be able to Signup
     * Navigate to Arcademania website, click on Login button
@@ -152,32 +137,36 @@
     * click on the the favourite games section header
     * User should be navigated to the favourites page
 
-13. As a user I should be able to view the global leaderboard
-    * Login to the website
-    * click on the leaderboard
-    * global leaderboard should be visible on a right pane which slides in immediately after the click is performed
+### Game Stories
 
-14. As a user I should be able to see Most liked/Played games
-    * Login to the website
-    * On the Homepage, there should be a section which will have most played games
+1. Develop 2048 game
+2. Develop Minesweeper game
+3. Develop BetCard game
+4. Develop Memory game
+5. Develop TicTacToe game
+6. Develop TypingSpeed game
+7. Develop Hangman game
+8. Develop CarCrash game
+9. Develop Connect4 game
+10. Develop Snake game
+11. Develop Rock-Paper-Scissors game
 
-### Other Stories
-
-1. Develop Car Crash game
-2. Develop Tic-tac-toe game
-3. Develop Memory card game
-4. Develop Connect4 game
-5. Develop Minesweeper game
 
 -----------------------------------------------------------------------------------------------------------------
 
 ## Games
 
-1. Car Crash
-2. Tic-tac-toe
-3. Memory card
-4. Connect4
-5. Minesweeper
+1. 2048 game
+2. Minesweeper game
+3. BetCard game
+4. Memory game
+5. TicTacToe game
+6. TypingSpeed game
+7. Hangman game
+8. CarCrash game
+9. Connect4 game
+10. Snake game
+11. Rock-Paper-Scissors game
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -198,5 +187,10 @@
 1. <https://nextjs.org/docs>
 2. <https://www.webtips.dev/javascript-game-ideas>
 3. <https://www.mirkosertic.de/blog/2013/04/domain-driven-design-example>
+4. <https://chakra-ui.com/>
+5. <https://www.webtips.dev/javascript-game-ideas>
+6. <https://sass-lang.com/documentation>
+7. <https://www.passportjs.org/docs>
+8. <https://reactjs.org/docs>
 
 -----------------------------------------------------------------------------------------------------------------
