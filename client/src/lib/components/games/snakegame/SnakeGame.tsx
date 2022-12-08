@@ -11,6 +11,7 @@ import { getSessionStorageToken } from "lib/utils/tokenUtils";
 import Food from "./Food";
 import Snake from "./Snake";
 import snakeGameStyles from "./styles/snakeGame.module.scss";
+import WinnerModal from "./WinnerModal";
 
 const getRandomCoords = () => {
   const min = 1;
@@ -178,6 +179,8 @@ class SnakeGame extends React.Component<DispatchProp, SnakeGameProps> {
   render() {
     const { play, snakeDots, food, pause, gameOver } = this.state;
     let button;
+    let modal;
+    if (gameOver !== "") modal = <WinnerModal gameOver={gameOver} />;
     if (play) {
       button = (
         <Button
@@ -219,7 +222,7 @@ class SnakeGame extends React.Component<DispatchProp, SnakeGameProps> {
             </>
           ) : (
             <Container className="text-white font-bold flex items-center">
-              {gameOver}
+              {modal}
             </Container>
           )}
         </Container>
