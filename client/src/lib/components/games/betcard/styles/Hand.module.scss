@@ -10,10 +10,12 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .title {
   text-align: center;
+  color: blue
 }
 
 @media screen and (max-width: 600px) {

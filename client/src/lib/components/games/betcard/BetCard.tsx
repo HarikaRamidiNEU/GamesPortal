@@ -3,8 +3,9 @@ import Status from './Status';
 import Controls from './Controls';
 import Hand from './Hand';
 import jsonData from './deck.json';
+import styles from './styles/Hand.module.scss';
 
-const App: React.FC = () => {
+const Betcard: React.FC = () => {
   enum GameState {
     bet,
     init,
@@ -260,7 +261,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <>
+    <div className={styles.handContainer}>
       <Status message={message} balance={balance} />
       <Controls
         balance={balance}
@@ -273,8 +274,8 @@ const App: React.FC = () => {
       />
       <Hand title={`Dealer's Hand (${dealerScore})`} cards={dealerCards} />
       <Hand title={`Your Hand (${userScore})`} cards={userCards} />
-    </>
+    </div>
   );
 }
 
-export default App;
+export default Betcard;
