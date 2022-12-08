@@ -13,6 +13,9 @@ import BlueCar from "./BlueCar";
 import ResultsCard from "./ResultsCard";
 import carstyles from "./styles/carCrash.module.scss";
 
+/**
+ * This class component is used to create car game main component
+ */
 class CarGame extends React.Component<DispatchProp, CarGameProps> {
   constructor(props: DispatchProp) {
     super(props);

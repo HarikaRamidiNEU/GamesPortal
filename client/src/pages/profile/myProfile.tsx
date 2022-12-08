@@ -23,6 +23,9 @@ import { getUser, updateUser } from "lib/services/user-service";
 import { raiseError, showSuccess } from "lib/utils/toastUtils";
 import { getSessionStorageToken } from "lib/utils/tokenUtils";
 
+/**
+ * FormValues types
+ */
 export type FormValues = {
   username: string;
   lastname: string;
@@ -32,6 +35,10 @@ export type FormValues = {
   confirmpassword: string;
 };
 
+/**
+ *This component is used to create and render the My profile page with a form to update
+ * @returns MYProfile page component
+ */
 const Myprofile = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClick = () => setShowPassword(!showPassword);
@@ -87,6 +94,11 @@ const Myprofile = () => {
     }
   };
 
+  /**
+   * This method is used to validate the email
+   * @param value value of email field
+   * @returns error in case of validation failure
+   */
   const validateEmail = (value: string) => {
     let error;
     if (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
@@ -95,6 +107,9 @@ const Myprofile = () => {
     return error;
   };
 
+  /**
+   * This method is used to get the user details from the database
+   */
   const getUserDetails = async () => {
     const token = getSessionStorageToken();
     getUser(token)
@@ -109,6 +124,11 @@ const Myprofile = () => {
       });
   };
 
+  /**
+   * This method is used to validate the password
+   * @param value value of password field
+   * @returns error in case of validation failure
+   */
   const validatePassword = (value: string) => {
     let error;
     if (value && value.length < 5)
@@ -119,6 +139,11 @@ const Myprofile = () => {
     return error;
   };
 
+  /**
+   * This method is used to validate the confirm password field with password
+   * @param value value of confirm password field
+   * @returns error in case of validation failure
+   */
   const validateConfirmPassword = (value: string) => {
     let error;
     if (!(value === password)) {
@@ -128,6 +153,9 @@ const Myprofile = () => {
   };
 
   getUserDetails();
+  /**
+   * returning the component
+   */
   return (
     <Container ml={5} mt={5} float="left">
       <Formik
@@ -320,4 +348,5 @@ const Myprofile = () => {
   );
 };
 
+// exporting the profile page
 export default Myprofile;
